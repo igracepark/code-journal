@@ -4,6 +4,23 @@
 
 body {
   font-family: Poppins, sans-serif;
+  position: relative;
+}
+
+.header-bar {
+  background-color: hotpink;
+  height: 2.5rem;
+}
+
+.header-container {
+  color: black;
+  position: absolute;
+  top: 0.5rem;
+}
+
+.header-container > h4 {
+  margin: 0 auto;
+  color: white;
 }
 
 .image-container {

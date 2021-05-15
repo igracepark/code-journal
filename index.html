@@ -17,49 +17,60 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header>
-  </header>
-  <main>
-    <div data-view="entry-form">
-      <div class="container">
+  <div class="header-bar"></div>
+
+    <div class="container">
+      <header>
         <div class="row">
-          <div class="columm-full">
+          <div class="column-full header-container">
+            <h4>Code Journal</h4>
+          </div>
+        </div>
+      </header>
+
+
+      <main>
+        <div class="row">
+          <div class="column-full">
             <h1>New Entry</h1>
           </div>
         </div>
 
 
-        <div class="row">
-          <div class="column-half image-container">
-            <img class="image" src="images/placeholder-image-square.jpg">
-          </div>
-          <div class="column-half input-container">
-            <label for="title">Title</label>
-            <input type="text" name="title" class="input-field" required>
-            <label for="photo-url">Photo URL</label>
-            <input type="url" name="photo-url" class="input-field" required>
-          </div>
+        <div data-view="entry-form">
+          <form>
+            <div class="row">
+              <div class="column-half image-container">
+                <img class="image" src="images/placeholder-image-square.jpg">
+              </div>
+              <div class="column-half input-container">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="input-field" required>
+                <label for="photo-url">Photo URL</label>
+                <input type="url" name="photo-url" class="input-field" required>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="column-full notes-container">
+                <label for="notes">Notes</label>
+                <textarea class="notes-field" type="text" name="notes" required>
+                </textarea>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="column-full button-save-container">
+                <button class="button-save" type="button">SAVE</button>
+              </div>
+            </div>
+
+          </form>
         </div>
-
-
-        <div class="row">
-          <div class="column-full notes-container">
-            <label for="notes">Notes</label>
-            <textarea class="notes-field" type="text" name="notes" required>
-            </textarea>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="column-full button-save-container">
-            <button class="button-save" type="button">SAVE</button>
-          </div>
-        </div>
-
-      </div>
+      </main>
     </div>
-  </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
