@@ -18,7 +18,12 @@ $formSubmit.addEventListener('submit', function (event) {
   const newEntry = {
     title: $formSubmit.elements.title.value,
     photoURL: $formSubmit.elements.photoURL.value,
-    notes: $formSubmit.elements.notes.value
+    notes: $formSubmit.elements.notes.value,
+    nextEntryId: data.nextEntryId
   };
-  return newEntry;
+
+  data.nextEntryId++;
+  data.entries.unshift(newEntry);
+  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $formSubmit.reset();
 });

@@ -5,6 +5,7 @@
 body {
   font-family: Poppins, sans-serif;
   position: relative;
+  background-color: #e8fff5;
 }
 
 .header-bar {
@@ -13,7 +14,6 @@ body {
 }
 
 .header-container {
-  color: black;
   position: absolute;
   top: 0.5rem;
 }
@@ -103,4 +103,5 @@ body {
 
 .button-save:hover:active {
   transform: translateY(0.25rem);
+  outline: none;
 }
