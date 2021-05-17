@@ -120,13 +120,14 @@ li {
   display: flex;
   list-style: none;
   justify-content: center;
+  padding-top: 1.5rem;
 }
 
 .image-entries-container {
   padding-bottom: 2rem;
 }
 
-li h3 {
+.entry-list h3 {
   margin-top: 0;
 }
 
