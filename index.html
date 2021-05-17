@@ -18,16 +18,15 @@
 </head>
 <body>
   <div class="header-bar"></div>
-
     <div class="container">
-      <header>
-        <div class="row">
-          <div class="column-full header-container">
-            <h4>Code Journal</h4>
+        <header>
+          <div class="row">
+            <div class="column-full header-container">
+              <h4>Code Journal</h4>
+            </div>
           </div>
-        </div>
-      </header>
-
+        </header>
+    <div data-view="entry-form">
       <main>
         <div class="row">
           <div class="column-full">
@@ -35,36 +34,64 @@
           </div>
         </div>
 
-        <div data-view="entry-form">
-          <form id="journal-entry">
-            <div class="row">
-              <div class="column-half image-container">
-                <img class="image" src="images/placeholder-image-square.jpg">
-              </div>
-              <div class="column-half input-container">
-                <label for="title">Title</label>
-                <input type="text" name="title" class="input-field" required>
-                <label for="photo-url">Photo URL</label>
-                <input type="url" name="photoURL" class="input-field" required>
-              </div>
+        <form id="journal-entry">
+          <div class="row">
+            <div class="column-half image-container">
+              <img class="image" src="images/placeholder-image-square.jpg">
             </div>
+            <div class="column-half input-container">
+              <label for="title">Title</label>
+              <input type="text" name="title" class="input-field" required>
+              <label for="photo-url">Photo URL</label>
+              <input type="url" name="photoURL" class="input-field" required>
+            </div>
+          </div>
 
-            <div class="row">
+          <div class="row">
               <div class="column-full notes-container">
                 <label for="notes">Notes</label>
                 <textarea class="notes-field" type="text" name="notes" required></textarea>
               </div>
             </div>
 
-            <div class="row">
-              <div class="column-full button-save-container">
-                <button class="button-save" type="submit">SAVE</button>
-              </div>
+          <div class="row">
+            <div class="column-full button-save-container">
+              <button class="button-save" type="submit">SAVE</button>
             </div>
+          </div>
+        </form>
+        </main>
+      </div>
 
-          </form>
+
+    <div data-view="entries">
+
+          <ul>
+            <li>
+              <div class="row">
+                <div class="column-half image-entries-container">
+                  <img class="image" src="images/placeholder-image-square.jpg">
+                </div>
+                <div class="column-half text-entries-container">
+                  <h3>Title of Journal Entry</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="row">
+                <div class="column-half image-entries-container">
+                  <img class="image-entries" src="images/placeholder-image-square.jpg">
+                </div>
+                <div class="column-half text-entries-container">
+                  <h3>Title of Journal Entry</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-      </main>
     </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
