@@ -74,9 +74,14 @@ function renderEntries(entries) {
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
+  // if (data.entries.length === 0) {
+  //   const noEntries = document.createElement('p');
+  //   noEntries.textContent = ('No entries have been recorded');
+  //   $entriesViewList.append(noEntries);
+  // }
   for (let i = 0; i < data.entries.length; i++) {
     const singleEntry = renderEntries(data.entries[i]);
-    const $entriesViewList = document.querySelector('ul');
+    const $entriesViewList = document.querySelector('.entry-view-list');
     $entriesViewList.append(singleEntry);
   }
 });

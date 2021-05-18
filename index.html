@@ -17,16 +17,18 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
   <div class="header-bar"></div>
+  <div data-view="entry-form" class="hidden">
     <div class="container">
-        <header>
-          <div class="row">
-            <div class="column-full header-container">
-              <h3>Code Journal</h3>
-            </div>
+      <header>
+        <div class="row">
+          <div class="column-full header-container">
+            <h3>Code Journal</h3>
           </div>
-        </header>
-    <div data-view="entry-form">
+        </div>
+      </header>
+
       <main>
         <div class="row">
           <div class="column-full">
@@ -62,17 +64,45 @@
         </form>
         </main>
       </div>
-
+    </div>
 
     <div data-view="entries">
-      <header>
-           <div class="row">
+      <!-- <div class="container">
+        <header>
+          <div class="row">
             <div class="column-full entries-header-container">
               <h5>Entries</h5>
             </div>
           </div>
+        </header> -->
+
+
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="column-full header-container">
+            <h3>Code Journal Entries</h3>
+          </div>
+        </div>
       </header>
-          <ul>
+
+
+
+
+        <div class="row">
+          <div class="column-full entries-subheader align">
+            <h1>Entries</h1>
+              <nav class="nav-bar-container">
+                <ul class="nav-list-container">
+                  <li><a href="#">Edit</a></li>
+                  <li><a>New</a></li>
+                </ul>
+              </nav>
+          </div>
+        </div>
+
+
+          <ul class="entry-view-list">
             <!-- <li class="entry-list">
               <div class="row">
                 <div class="column-half image-entries-container">
@@ -86,7 +116,8 @@
             </li> -->
           </ul>
         </div>
-    </div>
+      </div>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
