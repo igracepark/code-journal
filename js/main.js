@@ -28,10 +28,7 @@ $formSubmit.addEventListener('submit', function (event) {
   $formSubmit.reset();
 });
 
-// Define a function that takes a single journal entry object and returns a DOM
-// tree that matches one of the example entries in the HTML.
-
-// <li class=entryList>
+// <li class="entryList">
 //   <div class="row">
 //     <div class="column-half image-entries-container">
 //       <img class="image" src="images/placeholder-image-square.jpg">
@@ -43,26 +40,28 @@ $formSubmit.addEventListener('submit', function (event) {
 //   </div>
 // </li>
 
-function renderEntries() {
+function renderEntries(entries) {
   const entryList = document.createElement('li');
   entryList.setAttribute('class', 'entry-list');
 
   const divRow = document.createElement('div');
   divRow.setAttribute('class', 'row');
 
-  const divImgContainer = document.createElememt('div');
+  const divImgContainer = document.createElement('div');
   divImgContainer.classList.add('column-half', 'image-entries-container');
 
   const imageEntry = document.createElement('img');
   imageEntry.setAttribute('class', 'image');
-  imageEntry.setAttribute('src', 'images/placeholder-image-square.jpg');
+  imageEntry.setAttribute('src', entries.photoURL);
 
   const divTextContainer = document.createElement('div');
   divTextContainer.classList.add('column-half', 'text-entries-container');
 
   const entryTitle = document.createElement('h3');
+  entryTitle.textContent = (entries.title);
 
   const entryText = document.createElement('p');
+  entryText.textContent = (entries.notes);
 
   entryList.append(divRow);
   divRow.append(divImgContainer);
@@ -74,4 +73,10 @@ function renderEntries() {
   return entryList;
 }
 
-renderEntries();
+window.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < data.entries.length; i++) {
+    const singleEntry = renderEntries(data.entries[i]);
+    const $entriesViewList = document.querySelector('ul');
+    $entriesViewList.append(singleEntry);
+  }
+});
