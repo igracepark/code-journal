@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
   <div class="header-bar"></div>
   <div data-view="entry-form" class="view hidden">
     <div class="container">
@@ -50,11 +49,11 @@
           </div>
 
           <div class="row">
-              <div class="column-full notes-container">
-                <label for="notes">Notes</label>
+            <div class="column-full notes-container">
+              <label for="notes">Notes</label>
                 <textarea class="notes-field" type="text" name="notes" required></textarea>
-              </div>
             </div>
+          </div>
 
           <div class="row">
             <div class="column-full button-save-container">
@@ -62,21 +61,12 @@
             </div>
           </div>
         </form>
-        </main>
-      </div>
+      </main>
     </div>
-
-    <div data-view="entries" class="view">
-      <!-- <div class="container">
-        <header>
-          <div class="row">
-            <div class="column-full entries-header-container">
-              <h5>Entries</h5>
-            </div>
-          </div>
-        </header> -->
+  </div>
 
 
+  <div data-view="entries" class="view">
     <div class="container">
       <header>
         <div class="row">
@@ -86,35 +76,24 @@
         </div>
       </header>
 
-        <div class="row">
-          <div class="column-full entries-subheader align">
-            <h1>Entries</h1>
-              <nav class="nav-bar-container">
-                <ul class="nav-list-container">
-                  <li><a>Edit</a></li>
-                  <li ><a data-view="entry-form">New</a></li>
-                </ul>
-              </nav>
-          </div>
-        </div>
-
-
-          <ul class="entry-view-list">
-            <!-- <li class="entry-list">
-              <div class="row">
-                <div class="column-half image-entries-container">
-                  <img class="image" src="images/placeholder-image-square.jpg">
-                </div>
-                <div class="column-half text-entries-container">
-                  <h3>Title of Journal Entry</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-              </div>
-            </li> -->
-          </ul>
+      <div class="row">
+        <div class="column-full entries-subheader align">
+          <h1>Entries</h1>
+            <nav class="nav-bar-container">
+              <ul class="nav-list-container">
+                <li ><a data-view="entry-form">New</a></li>
+              </ul>
+            </nav>
         </div>
       </div>
 
+      <div class="row">
+        <ul class="entry-view-list">
+          <li class="no-entry-text">No entries have been recorded.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

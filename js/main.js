@@ -6,6 +6,10 @@ const $photoPreview = document.querySelector('.image');
 const $formSubmit = document.querySelector('#journal-entry');
 const $navBar = document.querySelector('.nav-bar-container');
 const $viewList = document.querySelectorAll('.view');
+const $entriesViewList = document.querySelector('.entry-view-list');
+const $entryForm = document.querySelector('div[data-view="entry-form"]');
+const $entries = document.querySelector('div[data-view="entries"]');
+const $noEntry = document.querySelector('.no-entry-text');
 
 $photoUrl.addEventListener('input', function (event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -27,20 +31,13 @@ $formSubmit.addEventListener('submit', function (event) {
   data.nextEntryId++;
   data.entries.unshift(newEntry);
   $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+
+  $entryForm.className = 'view hidden';
+  $entries.className = 'view';
+  $noEntry.className = 'hidden no-entry-text';
+  $entriesViewList.prepend(renderEntries(newEntry));
   $formSubmit.reset();
 });
-
-// <li class="entryList">
-//   <div class="row">
-//     <div class="column-half image-entries-container">
-//       <img class="image" src="images/placeholder-image-square.jpg">
-//     </div>
-//     <div class="column-half text-entries-container">
-//       <h3>Title of Journal Entry</h3>
-//       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-//     </div>
-//   </div>
-// </li>
 
 function renderEntries(entries) {
   const entryList = document.createElement('li');
@@ -76,21 +73,19 @@ function renderEntries(entries) {
 }
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  // if (data.entries.length === 0) {
-  //   const noEntries = document.createElement('p');
-  //   noEntries.textContent = ('No entries have been recorded');
-  //   $entriesViewList.append(noEntries);
-  // }
-  for (let i = 0; i < data.entries.length; i++) {
-    const singleEntry = renderEntries(data.entries[i]);
-    const $entriesViewList = document.querySelector('.entry-view-list');
-    $entriesViewList.append(singleEntry);
+  if (data.entries.length === 0) {
+    $noEntry.className = 'no-entry-text';
+  } else {
+    for (let i = 0; i < data.entries.length; i++) {
+      const singleEntry = renderEntries(data.entries[i]);
+      $entriesViewList.append(singleEntry);
+    }
+    $noEntry.className = 'hidden no-entry-text';
   }
 });
 
 $navBar.addEventListener('click', function (event) {
   const dataView = event.target.getAttribute('data-view');
-
   for (let x = 0; x < $viewList.length; x++) {
     if (dataView === $viewList[x].getAttribute('data-view')) {
       $viewList[x].className = 'view';

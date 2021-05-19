@@ -18,12 +18,6 @@ body {
   top: 0.4rem;
 }
 
-/* .entries-header-container {
-  display: flex;
-  justify-content: flex-start;
-} */
-
-/* .entries-header-container > h3, */
 .header-container > h3 {
   margin: 0 auto;
   color: white;
@@ -82,41 +76,66 @@ body {
   padding-bottom: 1.5rem;
 }
 
-.button-save {
-  text-transform: uppercase;
-  margin-top: 1rem;
-  width: 5rem;
-  height: 2rem;
-  background-color: hotpink;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  box-shadow: 1px 1px 5px 2px gray;
-  transition: background-color 0.5s ease;
-  transition: transform 0.5s ease;
-  cursor: pointer;
+.entry-view-list li {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 1.5rem;
 }
 
+.button-save {
+  width: 5rem;
+  height: 2rem;
+  margin-top: 1rem;
+  border: none;
+}
+
+.nav-list-container li,
+.button-save {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease;
+  transition: transform 0.5s ease;
+  box-shadow: 1px 1px 5px 1px gray;
+}
+
+.nav-list-container li {
+  padding: 0;
+  height: 2rem;
+  width: 4rem;
+  margin: 0.5rem;
+  list-style-type: none;
+  text-decoration: none;
+  margin-right: 0;
+  margin-top: 0.25rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-list-container li:hover,
 .button-save:hover {
   background-color: white;
   color: hotpink;
   border: 2.5px solid hotpink;
 }
 
+.nav-list-container li:hover,
 .input-field:hover,
 .button-save:hover,
 .notes-field:hover {
   transform: scale(1.05);
 }
 
+.nav-list-container li:hover:active,
 .button-save:hover:active {
   transform: translateY(0.25rem);
   outline: none;
 }
-
-/* div[data-view="entry-form"] {
-  display: none;
-} */
 
 .hidden {
   display: none;
@@ -125,13 +144,6 @@ body {
 ul {
   margin: 0;
   padding: 0;
-}
-
-li {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  padding-top: 1.5rem;
 }
 
 .image-entries-container {
@@ -155,6 +167,7 @@ li {
 .entries-subheader {
   display: flex;
   justify-content: space-between;
+  padding-top: 1rem;
 }
 
 .entries-subheader > h1 {
@@ -163,7 +176,6 @@ li {
 
 .nav-list-container {
   display: flex;
-  text-transform: uppercase;
 }
 
 .nav-bar-container {
@@ -172,31 +184,11 @@ li {
   justify-content: space-between;
 }
 
-.nav-list-container li {
-  padding: 0;
-  height: 2rem;
-  width: 4rem;
-  background-color: hotpink;
-  margin: 0.5rem;
-  border-radius: 0.2rem;
-  list-style-type: none;
-  text-decoration: none;
-  margin-right: 0;
-  padding-top: 0.25rem;
-  color: white;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
 .header-text {
   font-size: 0.8rem;
   padding-left: 1rem;
 }
 
 .view {
-  width: 100%;
+  display: flex;
 }
