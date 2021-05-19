@@ -18,12 +18,12 @@
 </head>
 <body>
   <div class="header-bar"></div>
-
+  <div data-view="entry-form" class="view hidden">
     <div class="container">
       <header>
         <div class="row">
           <div class="column-full header-container">
-            <h4>Code Journal</h4>
+            <h3>Code Journal</h3>
           </div>
         </div>
       </header>
@@ -35,37 +35,65 @@
           </div>
         </div>
 
-        <div data-view="entry-form">
-          <form id="journal-entry">
-            <div class="row">
-              <div class="column-half image-container">
-                <img class="image" src="images/placeholder-image-square.jpg">
-              </div>
-              <div class="column-half input-container">
-                <label for="title">Title</label>
-                <input type="text" name="title" class="input-field" required>
-                <label for="photo-url">Photo URL</label>
-                <input type="url" name="photoURL" class="input-field" required>
-              </div>
+        <form id="journal-entry">
+          <div class="row">
+            <div class="column-half image-container">
+              <img class="image" src="images/placeholder-image-square.jpg">
             </div>
+            <div class="column-half input-container">
+              <label for="title">Title</label>
+              <input type="text" name="title" class="input-field" required>
+              <label for="photo-url">Photo URL</label>
+              <input type="url" name="photoURL" class="input-field" required>
+            </div>
+          </div>
 
-            <div class="row">
-              <div class="column-full notes-container">
-                <label for="notes">Notes</label>
+          <div class="row">
+            <div class="column-full notes-container">
+              <label for="notes">Notes</label>
                 <textarea class="notes-field" type="text" name="notes" required></textarea>
-              </div>
             </div>
+          </div>
 
-            <div class="row">
-              <div class="column-full button-save-container">
-                <button class="button-save" type="submit">SAVE</button>
-              </div>
+          <div class="row">
+            <div class="column-full button-save-container">
+              <button class="button-save" type="submit">SAVE</button>
             </div>
-
-          </form>
-        </div>
+          </div>
+        </form>
       </main>
     </div>
+  </div>
+
+
+  <div data-view="entries" class="view">
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="column-full header-container">
+            <h3>Code Journal<span class="header-text">Entries</span></h3>
+          </div>
+        </div>
+      </header>
+
+      <div class="row">
+        <div class="column-full entries-subheader align">
+          <h1>Entries</h1>
+            <nav class="nav-bar-container">
+              <ul class="nav-list-container">
+                <li><a data-view="entry-form">New</a></li>
+              </ul>
+            </nav>
+        </div>
+      </div>
+
+      <!-- <div class="row column-full"> -->
+        <ul class="entry-view-list">
+          <li class="no-entry-text">No entries have been recorded.</li>
+        </ul>
+      </div>
+    </div>
+  <!-- </div> -->
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

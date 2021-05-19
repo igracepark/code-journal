@@ -15,4 +15,5 @@ if (previousEntries != null) {
 window.addEventListener('beforeunload', function (event) {
   const newEntriesString = JSON.stringify(data);
   this.localStorage.setItem('journal-local-storage', newEntriesString);
+  // this.localStorage.clear('journal-local-storage');
 });

@@ -15,12 +15,13 @@ body {
 
 .header-container {
   position: absolute;
-  top: 0.5rem;
+  top: 0.4rem;
 }
 
-.header-container > h4 {
+.header-container > h3 {
   margin: 0 auto;
   color: white;
+  position: relative;
 }
 
 .image-container {
@@ -29,6 +30,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.image-entries,
 .image {
   width: 100%;
   border-radius: 0.3rem;
@@ -74,34 +76,119 @@ body {
   padding-bottom: 1.5rem;
 }
 
-.button-save {
-  text-transform: uppercase;
-  margin-top: 1rem;
-  width: 5rem;
-  height: 2rem;
-  background-color: hotpink;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  box-shadow: 1px 1px 5px 2px gray;
-  transition: background-color 0.5s ease;
-  transition: transform 0.5s ease;
-  cursor: pointer;
+.entry-view-list li {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 1.5rem;
 }
 
+.button-save {
+  width: 5rem;
+  height: 2rem;
+  margin-top: 1rem;
+  border: none;
+}
+
+.nav-list-container li,
+.button-save {
+  background-color: hotpink;
+  color: white;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease;
+  transition: transform 0.5s ease;
+  box-shadow: 1px 1px 5px 1px gray;
+}
+
+.nav-list-container li {
+  padding: 0;
+  height: 2rem;
+  width: 4rem;
+  margin: 0.5rem;
+  list-style-type: none;
+  text-decoration: none;
+  margin-right: 0;
+  margin-top: 0.25rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-list-container li:hover,
 .button-save:hover {
   background-color: white;
   color: hotpink;
   border: 2.5px solid hotpink;
 }
 
+.nav-list-container li:hover,
 .input-field:hover,
 .button-save:hover,
 .notes-field:hover {
   transform: scale(1.05);
 }
 
+.nav-list-container li:hover:active,
 .button-save:hover:active {
   transform: translateY(0.25rem);
   outline: none;
 }
+
+.hidden {
+  display: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.image-entries-container {
+  padding-bottom: 2rem;
+}
+
+.entry-list h3 {
+  margin-top: 0;
+}
+
+.text-entries-container {
+  padding-bottom: 1.5rem;
+}
+
+.entries-header-container {
+  position: absolute;
+  top: 0.75rem;
+  left: 25rem;
+}
+
+.entries-subheader {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.entries-subheader > h1 {
+  margin: 0;
+}
+
+.nav-list-container {
+  display: flex;
+}
+
+.nav-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-text {
+  font-size: 0.8rem;
+  padding-left: 1rem;
+}
+
+/* .view {
+  display: flex;
+} */
