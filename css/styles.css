@@ -184,9 +184,19 @@ li {
   margin-right: 0;
   padding-top: 0.25rem;
   color: white;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+.header-text {
+  font-size: 0.8rem;
+  padding-left: 1rem;
+}
+
+.view {
+  width: 100%;
 }

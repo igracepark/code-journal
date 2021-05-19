@@ -4,6 +4,8 @@
 const $photoUrl = document.querySelector("div.input-container input[name='photoURL']");
 const $photoPreview = document.querySelector('.image');
 const $formSubmit = document.querySelector('#journal-entry');
+const $navBar = document.querySelector('.nav-bar-container');
+const $viewList = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -83,5 +85,17 @@ window.addEventListener('DOMContentLoaded', function (event) {
     const singleEntry = renderEntries(data.entries[i]);
     const $entriesViewList = document.querySelector('.entry-view-list');
     $entriesViewList.append(singleEntry);
+  }
+});
+
+$navBar.addEventListener('click', function (event) {
+  const dataView = event.target.getAttribute('data-view');
+
+  for (let x = 0; x < $viewList.length; x++) {
+    if (dataView === $viewList[x].getAttribute('data-view')) {
+      $viewList[x].className = 'view';
+    } else {
+      $viewList[x].className = 'view hidden';
+    }
   }
 });
