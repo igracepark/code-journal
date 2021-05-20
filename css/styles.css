@@ -156,6 +156,18 @@ ul {
 
 .text-entries-container {
   padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-render {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .entries-header-container {

@@ -56,8 +56,17 @@ function renderEntries(entries) {
   const divTextContainer = document.createElement('div');
   divTextContainer.classList.add('column-half', 'text-entries-container');
 
+  const divTitleContainer = document.createElement('div');
+  divTitleContainer.setAttribute('class', 'title-render');
+
   const entryTitle = document.createElement('h3');
   entryTitle.textContent = (entries.title);
+
+  const editIcon = document.createElement('img');
+  editIcon.setAttribute('src', 'images/outline_edit_black_24dp.png');
+  editIcon.setAttribute('class', 'edit-icon');
+
+  const divNotesContainer = document.createElement('div');
 
   const entryText = document.createElement('p');
   entryText.textContent = (entries.notes);
@@ -65,8 +74,14 @@ function renderEntries(entries) {
   entryList.append(divRow);
   divRow.append(divImgContainer);
   divImgContainer.append(imageEntry);
-  divRow.append(divTextContainer);
-  divTextContainer.append(entryTitle);
+  divRow.append(divTextContainer); // divTextContainer should be flex direction column
+
+  divTextContainer.append(divTitleContainer);
+  // <div title container>    // div container display flex space between
+  divTitleContainer.append(entryTitle); // title, icon
+  divTitleContainer.append(editIcon);
+  // </div>
+  divTextContainer.append(divNotesContainer); // div container, p
   divTextContainer.append(entryText);
 
   return entryList;
