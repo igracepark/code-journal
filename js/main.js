@@ -42,7 +42,7 @@ $formSubmit.addEventListener('submit', function (event) {
 function renderEntries(entries) {
   const entryList = document.createElement('li');
   entryList.setAttribute('class', 'entry-list');
-  entryList.setAttribute('data-entry-id', 'entries.nextEntryId');
+  // entryList.setAttribute('data-entry-id', entries.nextEntryId);
 
   const divRow = document.createElement('div');
   divRow.setAttribute('class', 'row');
@@ -66,6 +66,7 @@ function renderEntries(entries) {
   const editIcon = document.createElement('img');
   editIcon.setAttribute('src', 'images/outline_edit_black_24dp.png');
   editIcon.setAttribute('class', 'edit-icon');
+  editIcon.setAttribute('data-entry-id', entries.nextEntryId);
 
   const divNotesContainer = document.createElement('div');
 
@@ -110,8 +111,25 @@ $navBar.addEventListener('click', function (event) {
 
 $entriesViewList.addEventListener('click', function (event) {
   const currentClass = event.target.getAttribute('class');
+  const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
+
   if (currentClass === 'edit-icon') {
     $entryForm.className = 'view';
     $entries.className = 'view hidden';
+  }
+
+  // get current nextEntryId
+  // loop through entries
+  // check if numbers match
+  // if they match, use that data to fill the form
+  for (let y = 0; y < data.entries.length; y++) {
+    const entryId = data.entries[y].nextEntryId;
+
+    if (currentId === entryId) {
+      $formSubmit.elements.title.value = data.entries[y].title;
+      $formSubmit.elements.photoURL.value = data.entries[y].photoURL;
+      $formSubmit.elements.notes.value = data.entries[y].notes;
+      $photoPreview.setAttribute('src', data.entries[y].photoURL);
+    }
   }
 });
