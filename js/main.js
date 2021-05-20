@@ -42,6 +42,7 @@ $formSubmit.addEventListener('submit', function (event) {
 function renderEntries(entries) {
   const entryList = document.createElement('li');
   entryList.setAttribute('class', 'entry-list');
+  entryList.setAttribute('data-entry-id', 'entries.nextEntryId');
 
   const divRow = document.createElement('div');
   divRow.setAttribute('class', 'row');
@@ -74,14 +75,11 @@ function renderEntries(entries) {
   entryList.append(divRow);
   divRow.append(divImgContainer);
   divImgContainer.append(imageEntry);
-  divRow.append(divTextContainer); // divTextContainer should be flex direction column
-
+  divRow.append(divTextContainer);
   divTextContainer.append(divTitleContainer);
-  // <div title container>    // div container display flex space between
-  divTitleContainer.append(entryTitle); // title, icon
+  divTitleContainer.append(entryTitle);
   divTitleContainer.append(editIcon);
-  // </div>
-  divTextContainer.append(divNotesContainer); // div container, p
+  divTextContainer.append(divNotesContainer);
   divTextContainer.append(entryText);
 
   return entryList;
