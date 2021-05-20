@@ -107,3 +107,11 @@ $navBar.addEventListener('click', function (event) {
     }
   }
 });
+
+$entriesViewList.addEventListener('click', function (event) {
+  const currentClass = event.target.getAttribute('class');
+  if (currentClass === 'edit-icon') {
+    $entryForm.className = 'view';
+    $entries.className = 'view hidden';
+  }
+});
