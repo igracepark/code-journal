@@ -168,6 +168,12 @@ ul {
 .edit-icon {
   width: 1.5rem;
   height: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.edit-icon:hover {
+  transform: scale(1.3);
 }
 
 .entries-header-container {
