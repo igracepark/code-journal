@@ -46,7 +46,6 @@ function handleSubmit(event) {
 function renderEntries(entries) {
   const entryList = document.createElement('li');
   entryList.setAttribute('class', 'entry-list');
-  // entryList.setAttribute('data-entry-id', entries.nextEntryId);
 
   const divRow = document.createElement('div');
   divRow.setAttribute('class', 'row');
@@ -99,7 +98,6 @@ function handleOnLoad(event) {
     }
     $noEntry.className = 'hidden no-entry-text';
   }
-  // console.log('data.entries', data.entries);
 }
 
 function navLinks(event) {
@@ -122,24 +120,22 @@ function editIconClick(event) {
     $entryForm.className = 'view';
     $entries.className = 'view hidden';
   }
+
   for (let y = 0; y < data.entries.length; y++) {
-    const entryId = data.entries[y].nextEntryId;
-    // console.log('entryId', entryId);
-    if (currentId === entryId) {
-      // console.log('data.entries[y]', data.entries[y]);
+    if (currentId === data.entries[y].nextEntryId) {
+    // console.log('it matches', currentId, data.entries[y].nextEntryId);
       data.editing = data.entries[y];
-      // console.log('data.editing', data.editing);
     }
-    $formSubmit.elements.title.value = data.editing.title;
-    $formSubmit.elements.photoURL.value = data.editing.photoURL;
-    $formSubmit.elements.notes.value = data.editing.notes;
-    $photoPreview.setAttribute('src', data.editing.photoURL);
   }
+  $formSubmit.elements.title.value = data.editing.title;
+  $formSubmit.elements.photoURL.value = data.editing.photoURL;
+  $formSubmit.elements.notes.value = data.editing.notes;
+  $photoPreview.setAttribute('src', data.editing.photoURL);
 }
 
 function handleEdit(entry) {
   // const editIndex = data.entries.indexOf(data.editing)
-  // console.log('data.editing', data.editing);
+
   // const editedEntry = {
   //   title: $formSubmit.elements.title.value,
   //   photoURL: $formSubmit.elements.photoURL.value,
@@ -161,7 +157,7 @@ function handleEdit(entry) {
   // }
 
   data.editing = null;
-  $formSubmit.reset();
+  // $formSubmit.reset();
 
 }
 
