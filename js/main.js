@@ -15,6 +15,9 @@ const $footerLinks = document.querySelector('.footer-links');
 const $buttonSave = document.querySelector('.button-save-container');
 const $deleteLink = document.querySelector('.delete-link');
 const $modalContainer = document.querySelector('.modal-container');
+const $cancelModal = document.querySelector('.cancel-modal');
+// const $confirmModal = document.querySelector('.confirm-modal');
+let modalOpen = false;
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -168,11 +171,13 @@ function clearData() {
   data.editing = null;
 }
 
-function openModal(event) {
-  // console.log('delete function clicked');
-  // console.log('event.target', event.target);
-  $modalContainer.className = 'modal-container view';
-
+function toggleModal(event) {
+  modalOpen = !modalOpen;
+  if (modalOpen) {
+    $modalContainer.className = 'modal-container';
+  } else {
+    $modalContainer.className = 'modal-container hidden';
+  }
 }
 
 window.addEventListener('DOMContentLoaded', handleOnLoad);
@@ -180,7 +185,5 @@ $photoUrl.addEventListener('input', imagePreview);
 $entriesViewList.addEventListener('click', editIconClick);
 $navBar.addEventListener('click', navLinks);
 $formSubmit.addEventListener('submit', handleSubmit);
-$deleteLink.addEventListener('click', openModal);
-
-// after edit icon is clicked, show delete entry link
-//
+$deleteLink.addEventListener('click', toggleModal);
+$cancelModal.addEventListener('click', toggleModal);
