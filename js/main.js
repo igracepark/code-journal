@@ -10,6 +10,7 @@ const $entriesViewList = document.querySelector('.entry-view-list');
 const $entryForm = document.querySelector('div[data-view="entry-form"]');
 const $entries = document.querySelector('div[data-view="entries"]');
 const $noEntry = document.querySelector('.no-entry-text');
+const $titleHeader = document.querySelector('.title');
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -115,6 +116,7 @@ function editIconClick(event) {
   const currentClass = event.target.getAttribute('class');
   const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
   if (currentClass === 'edit-icon') {
+    $titleHeader.textContent = 'Edit entry';
     $entryForm.className = 'view';
     $entries.className = 'view hidden';
 
@@ -145,7 +147,7 @@ function handleEdit(entry) {
   $noEntry.className = 'hidden no-entry-text';
 
   clearData();
-  handleOnLoad();
+  handleOnLoad(data);
 }
 
 function clearData() {
