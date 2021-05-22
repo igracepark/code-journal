@@ -114,51 +114,43 @@ function navLinks(event) {
 function editIconClick(event) {
   const currentClass = event.target.getAttribute('class');
   const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
-  // console.log('currentId', currentId);
-
   if (currentClass === 'edit-icon') {
     $entryForm.className = 'view';
     $entries.className = 'view hidden';
-  }
 
-  for (let y = 0; y < data.entries.length; y++) {
-    if (currentId === data.entries[y].nextEntryId) {
-    // console.log('it matches', currentId, data.entries[y].nextEntryId);
-      data.editing = data.entries[y];
+    for (let y = 0; y < data.entries.length; y++) {
+      if (currentId === data.entries[y].nextEntryId) {
+        data.editing = data.entries[y];
+      }
     }
+    $formSubmit.elements.title.value = data.editing.title;
+    $formSubmit.elements.photoURL.value = data.editing.photoURL;
+    $formSubmit.elements.notes.value = data.editing.notes;
+    $photoPreview.setAttribute('src', data.editing.photoURL);
   }
-  $formSubmit.elements.title.value = data.editing.title;
-  $formSubmit.elements.photoURL.value = data.editing.photoURL;
-  $formSubmit.elements.notes.value = data.editing.notes;
-  $photoPreview.setAttribute('src', data.editing.photoURL);
 }
 
 function handleEdit(entry) {
-  // const editIndex = data.entries.indexOf(data.editing)
+  const editIndex = data.entries.indexOf(data.editing);
 
-  // const editedEntry = {
-  //   title: $formSubmit.elements.title.value,
-  //   photoURL: $formSubmit.elements.photoURL.value,
-  //   notes: $formSubmit.elements.notes.value,
-  //   nextEntryId: data.editing.nextEntryId
-  // };
-
-  // const replaceEntry = data.entries.splice(editIndex, 1, editedEntry);
-
-  // console.log('data.entries', data.entries);
-
+  const editedEntry = {
+    title: $formSubmit.elements.title.value,
+    photoURL: $formSubmit.elements.photoURL.value,
+    notes: $formSubmit.elements.notes.value,
+    nextEntryId: data.editing.nextEntryId
+  };
+  data.entries.splice(editIndex, 1, editedEntry);
   $entryForm.className = 'view hidden';
   $entries.className = 'view';
   $noEntry.className = 'hidden no-entry-text';
 
-  // $entriesViewList.remove();
-  // for (let z = 0; z < data.entries.length; z++) {
-  //   $entriesViewList.append(renderEntries(data.entries[z]));
-  // }
+  clearData();
+  handleOnLoad();
+}
 
+function clearData() {
+  $entriesViewList.innerHTML = '';
   data.editing = null;
-  // $formSubmit.reset();
-
 }
 
 window.addEventListener('DOMContentLoaded', handleOnLoad);
