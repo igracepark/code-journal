@@ -11,6 +11,9 @@ const $entryForm = document.querySelector('div[data-view="entry-form"]');
 const $entries = document.querySelector('div[data-view="entries"]');
 const $noEntry = document.querySelector('.no-entry-text');
 const $titleHeader = document.querySelector('.title');
+const $footerLinks = document.querySelector('.footer-links');
+const $buttonSave = document.querySelector('.button-save-container');
+const $deleteLink = document.querySelector('.delete-link');
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -38,6 +41,7 @@ function handleSubmit(event) {
 
     $entryForm.className = 'view hidden';
     $entries.className = 'view';
+    data.view = 'entries';
     $noEntry.className = 'hidden no-entry-text';
     $entriesViewList.prepend(renderEntries(newEntry));
     $formSubmit.reset();
@@ -90,6 +94,7 @@ function renderEntries(entries) {
 }
 
 function handleOnLoad(event) {
+  data.view = 'entries';
   if (data.entries.length === 0) {
     $noEntry.className = 'no-entry-text';
   } else {
@@ -102,10 +107,12 @@ function handleOnLoad(event) {
 }
 
 function navLinks(event) {
+  $buttonSave.className = 'column-full button-save-container button-default';
   const dataView = event.target.getAttribute('data-view');
   for (let x = 0; x < $viewList.length; x++) {
     if (dataView === $viewList[x].getAttribute('data-view')) {
       $viewList[x].className = 'view';
+      data.view = dataView;
     } else {
       $viewList[x].className = 'view hidden';
     }
@@ -118,7 +125,10 @@ function editIconClick(event) {
   if (currentClass === 'edit-icon') {
     $titleHeader.textContent = 'Edit entry';
     $entryForm.className = 'view';
+    data.view = 'entry-form';
     $entries.className = 'view hidden';
+    $footerLinks.className = 'footer-links view';
+    $buttonSave.className = 'column-full button-save-container button-edit';
 
     for (let y = 0; y < data.entries.length; y++) {
       if (currentId === data.entries[y].nextEntryId) {
@@ -144,8 +154,10 @@ function handleEdit(entry) {
   data.entries.splice(editIndex, 1, editedEntry);
   $entryForm.className = 'view hidden';
   $entries.className = 'view';
+  data.view = 'entries';
   $noEntry.className = 'hidden no-entry-text';
 
+  $buttonSave.className = 'column-full button-save-container button-default';
   clearData();
   handleOnLoad(data);
 }
@@ -155,8 +167,17 @@ function clearData() {
   data.editing = null;
 }
 
+function deleteEntry(event) {
+  // console.log('delete function clicked');
+  // console.log('event.target', event.target);
+}
+
 window.addEventListener('DOMContentLoaded', handleOnLoad);
 $photoUrl.addEventListener('input', imagePreview);
 $entriesViewList.addEventListener('click', editIconClick);
 $navBar.addEventListener('click', navLinks);
 $formSubmit.addEventListener('submit', handleSubmit);
+$deleteLink.addEventListener('click', deleteEntry);
+
+// after edit icon is clicked, show delete entry link
+//
