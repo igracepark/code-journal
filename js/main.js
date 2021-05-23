@@ -12,7 +12,6 @@ const $entries = document.querySelector('div[data-view="entries"]');
 const $noEntry = document.querySelector('.no-entry-text');
 const $titleHeader = document.querySelector('.title');
 const $footerLinks = document.querySelector('.footer-links');
-const $buttonSave = document.querySelector('.button-save-container');
 const $deleteLink = document.querySelector('.delete-link');
 const $modalContainer = document.querySelector('.modal-container');
 // const $cancelModal = document.querySelector('.cancel-modal');
@@ -107,12 +106,11 @@ function handleOnLoad(event) {
       const singleEntry = renderEntries(data.entries[i]);
       $entriesViewList.append(singleEntry);
     }
-    $noEntry.className = 'hidden no-entry-text';
+    $noEntry.className = 'no-entry-text hidden';
   }
 }
 
 function navLinks(event) {
-  $buttonSave.className = 'column-full button-save-container button-default';
   const dataView = event.target.getAttribute('data-view');
   for (let x = 0; x < $viewList.length; x++) {
     if (dataView === $viewList[x].getAttribute('data-view')) {
@@ -127,17 +125,14 @@ function navLinks(event) {
 function editIconClick(event) {
   const currentClass = event.target.getAttribute('class');
   const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
-  // console.log('currentid', currentId);
   if (currentClass === 'edit-icon') {
     $titleHeader.textContent = 'Edit entry';
     $entryForm.className = 'view';
     data.view = 'entry-form';
     $entries.className = 'view hidden';
     $footerLinks.className = 'footer-links view';
-    $buttonSave.className = 'column-full button-save-container button-edit';
 
     for (let y = 0; y < data.entries.length; y++) {
-      // console.log('dataid', data.entries[y].nextEntryId);
       if (currentId === data.entries[y].nextEntryId) {
         data.editing = data.entries[y];
       }
@@ -162,11 +157,10 @@ function handleEdit(entry) {
   $entryForm.className = 'view hidden';
   $entries.className = 'view';
   data.view = 'entries';
-  $noEntry.className = 'hidden no-entry-text';
+  // $noEntry.className = 'hidden no-entry-text';
 
-  $buttonSave.className = 'column-full button-save-container button-default';
   clearData();
-  handleOnLoad(data);
+  handleOnLoad();
 }
 
 function clearData() {
@@ -178,7 +172,6 @@ function openModal(event) {
   $modalContainer.className = 'modal-container';
 
   $modalButtons.addEventListener('click', function (event) {
-    $modalContainer.className = 'modal-container hidden';
     if (event.target.getAttribute('class') === 'cancel-modal') {
       cancelModal();
     } else {
@@ -189,20 +182,23 @@ function openModal(event) {
 
 function cancelModal() {
   // console.log('cancelModal');
-
+  $modalContainer.className = 'modal-container hidden';
 }
 
 function deleteEntry() {
+  // console.log('data.editing.nextEntryId', data.editing.nextEntryId);
+  $modalContainer.className = 'modal-container hidden';
+  $footerLinks.className = 'footer-links hidden';
   // const currentDeleteId = data.editing.nextEntryId;
-  // console.log('currentdeleteid', data.editing.nextEntryId);
+  // console.log('currentDeleteId', currentDeleteId);
   const deleteIndex = data.entries.indexOf(data.editing);
-
   // console.log('deleteIndex', deleteIndex);
-  // console.log('data.edit', data.editing);
   data.entries.splice(deleteIndex, 1);
+  $entryForm.className = 'view hidden';
+  $entries.className = 'view';
+  data.view = 'entries';
   clearData();
   handleOnLoad();
-
 }
 
 window.addEventListener('DOMContentLoaded', handleOnLoad);

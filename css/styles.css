@@ -77,13 +77,6 @@ body {
   margin-top: 1rem;
   display: flex;
   align-items: center;
-}
-
-.button-edit {
-  justify-content: space-between;
-}
-
-.button-default {
   justify-content: flex-end;
 }
 
@@ -289,4 +282,8 @@ ul {
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
+}
+
+.footer-container {
+  position: relative;
 }
