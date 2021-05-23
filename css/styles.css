@@ -263,6 +263,7 @@ ul {
 
 .delete-link:hover {
   color: #2b2d2f;
+  cursor: pointer;
 }
 
 .modal-container {

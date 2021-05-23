@@ -15,9 +15,10 @@ const $footerLinks = document.querySelector('.footer-links');
 const $buttonSave = document.querySelector('.button-save-container');
 const $deleteLink = document.querySelector('.delete-link');
 const $modalContainer = document.querySelector('.modal-container');
-const $cancelModal = document.querySelector('.cancel-modal');
+// const $cancelModal = document.querySelector('.cancel-modal');
 // const $confirmModal = document.querySelector('.confirm-modal');
-let modalOpen = false;
+const $modalButtons = document.querySelector('.modal-buttons');
+// let modalOpen = false;
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -126,6 +127,7 @@ function navLinks(event) {
 function editIconClick(event) {
   const currentClass = event.target.getAttribute('class');
   const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
+  // console.log('currentid', currentId);
   if (currentClass === 'edit-icon') {
     $titleHeader.textContent = 'Edit entry';
     $entryForm.className = 'view';
@@ -135,6 +137,7 @@ function editIconClick(event) {
     $buttonSave.className = 'column-full button-save-container button-edit';
 
     for (let y = 0; y < data.entries.length; y++) {
+      // console.log('dataid', data.entries[y].nextEntryId);
       if (currentId === data.entries[y].nextEntryId) {
         data.editing = data.entries[y];
       }
@@ -171,13 +174,35 @@ function clearData() {
   data.editing = null;
 }
 
-function toggleModal(event) {
-  modalOpen = !modalOpen;
-  if (modalOpen) {
-    $modalContainer.className = 'modal-container';
-  } else {
+function openModal(event) {
+  $modalContainer.className = 'modal-container';
+
+  $modalButtons.addEventListener('click', function (event) {
     $modalContainer.className = 'modal-container hidden';
-  }
+    if (event.target.getAttribute('class') === 'cancel-modal') {
+      cancelModal();
+    } else {
+      deleteEntry();
+    }
+  });
+}
+
+function cancelModal() {
+  // console.log('cancelModal');
+
+}
+
+function deleteEntry() {
+  // const currentDeleteId = data.editing.nextEntryId;
+  // console.log('currentdeleteid', data.editing.nextEntryId);
+  const deleteIndex = data.entries.indexOf(data.editing);
+
+  // console.log('deleteIndex', deleteIndex);
+  // console.log('data.edit', data.editing);
+  data.entries.splice(deleteIndex, 1);
+  clearData();
+  handleOnLoad();
+
 }
 
 window.addEventListener('DOMContentLoaded', handleOnLoad);
@@ -185,5 +210,4 @@ $photoUrl.addEventListener('input', imagePreview);
 $entriesViewList.addEventListener('click', editIconClick);
 $navBar.addEventListener('click', navLinks);
 $formSubmit.addEventListener('submit', handleSubmit);
-$deleteLink.addEventListener('click', toggleModal);
-$cancelModal.addEventListener('click', toggleModal);
+$deleteLink.addEventListener('click', openModal);

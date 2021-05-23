@@ -44,7 +44,7 @@
               <label for="title">Title</label>
               <input type="text" name="title" class="input-field" required>
               <label for="photo-url">Photo URL</label>
-              <input type="url" name="photoURL" class="input-field" required>
+              <input type="url" name="photoURL" class="input-field">
             </div>
           </div>
 
@@ -58,7 +58,8 @@
           <div class="row">
             <div class="column-full button-save-container button-default">
               <ul class="footer-links hidden">
-                <li><a class="delete-link" href="#">Delete Entry</a></li>
+                <li class="delete-link">Delete Entry</li>
+
                   <div class="modal-container hidden">
                     <div class="modal-dialog">
                       <p>Are you sure you want to delete this entry?</p>
@@ -68,6 +69,8 @@
                       </div>
                     </div>
                   </div>
+
+
               </ul>
               <button class="button-save" type="submit">SAVE</button>
             </div>
