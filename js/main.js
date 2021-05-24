@@ -186,19 +186,16 @@ function cancelModal() {
 }
 
 function deleteEntry() {
-  // console.log('data.editing.nextEntryId', data.editing.nextEntryId);
   $modalContainer.className = 'modal-container hidden';
   $footerLinks.className = 'footer-links hidden';
-  // const currentDeleteId = data.editing.nextEntryId;
-  // console.log('currentDeleteId', currentDeleteId);
   const deleteIndex = data.entries.indexOf(data.editing);
-  // console.log('deleteIndex', deleteIndex);
   data.entries.splice(deleteIndex, 1);
   $entryForm.className = 'view hidden';
   $entries.className = 'view';
   data.view = 'entries';
   clearData();
   handleOnLoad();
+  $formSubmit.reset();
 }
 
 window.addEventListener('DOMContentLoaded', handleOnLoad);

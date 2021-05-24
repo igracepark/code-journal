@@ -78,6 +78,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+}
+
+.button-save {
+  position: absolute;
+  top: 0.8rem;
 }
 
 .entry-view-list li {
@@ -284,6 +290,7 @@ ul {
   justify-content: space-between;
 }
 
-.footer-container {
-  position: relative;
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
 }
