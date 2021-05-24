@@ -74,6 +74,16 @@ body {
 .button-save-container {
   text-align: right;
   padding-bottom: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.button-save {
+  position: absolute;
+  top: 0.8rem;
 }
 
 .entry-view-list li {
@@ -83,23 +93,25 @@ body {
   padding-top: 1.5rem;
 }
 
+.cancel-modal,
+.confirm-modal,
 .button-save {
   width: 5rem;
   height: 2rem;
-  margin-top: 1rem;
   border: none;
+}
+
+.cancel-modal {
+  background-color: gray;
+}
+
+.confirm-modal {
+  background-color: #ea3c53;
 }
 
 .nav-list-container li,
 .button-save {
   background-color: hotpink;
-  color: white;
-  cursor: pointer;
-  border-radius: 0.3rem;
-  text-transform: uppercase;
-  transition: background-color 0.5s ease;
-  transition: transform 0.5s ease;
-  box-shadow: 1px 1px 5px 1px gray;
 }
 
 .nav-list-container li {
@@ -117,13 +129,21 @@ body {
   justify-content: center;
 }
 
-.nav-list-container li:hover,
-.button-save:hover {
-  background-color: white;
-  color: hotpink;
-  border: 2.5px solid hotpink;
+.cancel-modal,
+.confirm-modal,
+.nav-list-container li,
+.button-save {
+  color: white;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease;
+  transition: transform 0.5s ease;
+  box-shadow: 1px 1px 5px 1px gray;
 }
 
+.cancel-modal:hover,
+.confirm-modal:hover,
 .nav-list-container li:hover,
 .input-field:hover,
 .button-save:hover,
@@ -131,6 +151,27 @@ body {
   transform: scale(1.05);
 }
 
+.cancel-modal:hover {
+  background-color: white;
+  color: gray;
+  border: 0.1rem solid gray;
+}
+
+.confirm-modal:hover {
+  background-color: white;
+  color: #ea3c53;
+  border: 0.1rem solid #ea3c53;
+}
+
+.nav-list-container li:hover,
+.button-save:hover {
+  background-color: white;
+  color: hotpink;
+  border: 2.5px solid hotpink;
+}
+
+.cancel-modal:hover:active,
+.confirm-modal:hover:active,
 .nav-list-container li:hover:active,
 .button-save:hover:active {
   transform: translateY(0.25rem);
@@ -209,4 +250,47 @@ ul {
 
 .no-entry-text {
   text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.delete-link {
+  color: #ea3c53;
+}
+
+.delete-link:hover {
+  color: #2b2d2f;
+  cursor: pointer;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-dialog {
+  padding: 1.2rem;
+  background-color: white;
+  border-radius: 0.3rem;
+  box-shadow: 1px 1px 5px 5px #2b2d2f;
+}
+
+.modal-buttons {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
 }

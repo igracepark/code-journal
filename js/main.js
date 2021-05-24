@@ -10,6 +10,11 @@ const $entriesViewList = document.querySelector('.entry-view-list');
 const $entryForm = document.querySelector('div[data-view="entry-form"]');
 const $entries = document.querySelector('div[data-view="entries"]');
 const $noEntry = document.querySelector('.no-entry-text');
+const $titleHeader = document.querySelector('.title');
+const $footerLinks = document.querySelector('.footer-links');
+const $deleteLink = document.querySelector('.delete-link');
+const $modalContainer = document.querySelector('.modal-container');
+const $modalButtons = document.querySelector('.modal-buttons');
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -37,6 +42,7 @@ function handleSubmit(event) {
 
     $entryForm.className = 'view hidden';
     $entries.className = 'view';
+    data.view = 'entries';
     $noEntry.className = 'hidden no-entry-text';
     $entriesViewList.prepend(renderEntries(newEntry));
     $formSubmit.reset();
@@ -89,6 +95,7 @@ function renderEntries(entries) {
 }
 
 function handleOnLoad(event) {
+  data.view = 'entries';
   if (data.entries.length === 0) {
     $noEntry.className = 'no-entry-text';
   } else {
@@ -96,7 +103,7 @@ function handleOnLoad(event) {
       const singleEntry = renderEntries(data.entries[i]);
       $entriesViewList.append(singleEntry);
     }
-    $noEntry.className = 'hidden no-entry-text';
+    $noEntry.className = 'no-entry-text hidden';
   }
 }
 
@@ -105,6 +112,7 @@ function navLinks(event) {
   for (let x = 0; x < $viewList.length; x++) {
     if (dataView === $viewList[x].getAttribute('data-view')) {
       $viewList[x].className = 'view';
+      data.view = dataView;
     } else {
       $viewList[x].className = 'view hidden';
     }
@@ -115,8 +123,11 @@ function editIconClick(event) {
   const currentClass = event.target.getAttribute('class');
   const currentId = JSON.parse(event.target.getAttribute('data-entry-id'));
   if (currentClass === 'edit-icon') {
+    $titleHeader.textContent = 'Edit entry';
     $entryForm.className = 'view';
+    data.view = 'entry-form';
     $entries.className = 'view hidden';
+    $footerLinks.className = 'footer-links view';
 
     for (let y = 0; y < data.entries.length; y++) {
       if (currentId === data.entries[y].nextEntryId) {
@@ -142,10 +153,11 @@ function handleEdit(entry) {
   data.entries.splice(editIndex, 1, editedEntry);
   $entryForm.className = 'view hidden';
   $entries.className = 'view';
-  $noEntry.className = 'hidden no-entry-text';
-
+  data.view = 'entries';
+  // $noEntry.className = 'hidden no-entry-text';
   clearData();
   handleOnLoad();
+  $formSubmit.reset();
 }
 
 function clearData() {
@@ -153,8 +165,38 @@ function clearData() {
   data.editing = null;
 }
 
+function openModal(event) {
+  $modalContainer.className = 'modal-container';
+
+  $modalButtons.addEventListener('click', function (event) {
+    if (event.target.getAttribute('class') === 'cancel-modal') {
+      cancelModal();
+    } else {
+      deleteEntry();
+    }
+  });
+}
+
+function cancelModal() {
+  $modalContainer.className = 'modal-container hidden';
+}
+
+function deleteEntry() {
+  $modalContainer.className = 'modal-container hidden';
+  $footerLinks.className = 'footer-links hidden';
+  const deleteIndex = data.entries.indexOf(data.editing);
+  data.entries.splice(deleteIndex, 1);
+  $entryForm.className = 'view hidden';
+  $entries.className = 'view';
+  data.view = 'entries';
+  clearData();
+  handleOnLoad();
+  $formSubmit.reset();
+}
+
 window.addEventListener('DOMContentLoaded', handleOnLoad);
 $photoUrl.addEventListener('input', imagePreview);
 $entriesViewList.addEventListener('click', editIconClick);
 $navBar.addEventListener('click', navLinks);
 $formSubmit.addEventListener('submit', handleSubmit);
+$deleteLink.addEventListener('click', openModal);
