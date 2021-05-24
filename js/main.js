@@ -14,10 +14,7 @@ const $titleHeader = document.querySelector('.title');
 const $footerLinks = document.querySelector('.footer-links');
 const $deleteLink = document.querySelector('.delete-link');
 const $modalContainer = document.querySelector('.modal-container');
-// const $cancelModal = document.querySelector('.cancel-modal');
-// const $confirmModal = document.querySelector('.confirm-modal');
 const $modalButtons = document.querySelector('.modal-buttons');
-// let modalOpen = false;
 
 function imagePreview(event) {
   const currentURL = $photoPreview.getAttribute('src');
@@ -158,9 +155,9 @@ function handleEdit(entry) {
   $entries.className = 'view';
   data.view = 'entries';
   // $noEntry.className = 'hidden no-entry-text';
-
   clearData();
   handleOnLoad();
+  $formSubmit.reset();
 }
 
 function clearData() {
@@ -181,7 +178,6 @@ function openModal(event) {
 }
 
 function cancelModal() {
-  // console.log('cancelModal');
   $modalContainer.className = 'modal-container hidden';
 }
 
